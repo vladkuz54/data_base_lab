@@ -1,0 +1,65 @@
+# Docker DB
+../../../../Users/Pavelchak/Desktop/DataBase/
+
+# SQLite
+*.sqlite
+
+# PyTest
+.pytest_cache/
+__pycache__/
+pytest.ini
+
+# virtualenv
+app/venv/
+
+# IntelliJ
+/out/
+.idea/
+
+# Byte-compiled / optimized / DLL files
+v2_indexcache/
+*.pydevinfo
+*.py[cod]
+
+# OS generated files
+.DS_Store
+.DS_Store?
+.Trash-*
+
+*~
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# PyInstaller
+*.manifest
+*.spec
+
+#Egg info files produced by pip installation
+*egg-info
+
+# Git mergetool files #
+*_BACKUP_*
+*_BASE_*
+*_LOCAL_*
+*_REMOTE_*
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# PyBuilder
+target/
+
