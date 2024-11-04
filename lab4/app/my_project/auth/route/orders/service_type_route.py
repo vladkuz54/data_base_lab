@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, Response, request, make_response
 from lab4.app.my_project.auth.controller import service_type_controller
 from lab4.app.my_project.auth.domain import ServiceType
 
-service_type_bp = Blueprint('service_types', __name__, url_prefix='/service_types')
+service_type_bp = Blueprint('service_types', __name__, url_prefix='/service-types')
 
 
 @service_type_bp.get('')
