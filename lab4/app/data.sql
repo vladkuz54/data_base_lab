@@ -187,23 +187,24 @@ begin
 end ///
 
 create procedure get_masters_after_service_jobs(
-	in service_jod_id int
+	in master_id int
     )
 begin
-	select sjm.service_job_id, m.id, m.surname, m.phone_number
+	select sjm.id, sjm.service_job_id, m.id as master_id, m.surname, m.phone_number
 	from masters m
 	join service_job_masters sjm on m.id = sjm.master_id
-	where sjm.service_job_id = service_jod_id;
+	where sjm.service_job_id = master_id;
+
 end ///
 
 create procedure get_service_job_after_masters(
-	in master_id int
+	in service_jod_id int
     )
 begin
 	select sjm.id, sjm.service_job_id, sj.service_type_id
 	from service_job sj
 	join service_job_masters sjm on sj.id = sjm.master_id
-	where sjm.service_job_id = master_id;
+	where sjm.service_job_id = service_jod_id;
 end ///
 
 delimiter ;
