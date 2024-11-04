@@ -47,6 +47,6 @@ def delete_shop(shop_id: int) -> Response:
     return make_response("Shop deleted", HTTPStatus.OK)
 
 
-@shop_bp.get('/get_shops_after_client/<int:client_id>')
+@shop_bp.get('/get-shops-after-client/<int:client_id>')
 def get_shops_after_client(client_id: int) -> Response:
     return make_response(jsonify(shop_controller.get_shops_after_client(client_id)), HTTPStatus.OK)
