@@ -47,13 +47,13 @@ def delete_terminal(terminal_id: int) -> Response:
     return make_response("Terminal deleted", HTTPStatus.OK)
 
 
-@terminal_bp.get('/get_terminals_after_shop/<int:shop_id>')
+@terminal_bp.get('/get-terminals-after-shop/<int:shop_id>')
 def get_terminals_after_shop(shop_id: int) -> Response:
     return make_response(jsonify(terminal_controller.get_terminals_after_shop(shop_id)),
                          HTTPStatus.OK)
 
 
-@terminal_bp.get('/get_terminals_after_manufacturer/<int:manufactures_id>')
+@terminal_bp.get('/get-terminals-after-manufacturer/<int:manufactures_id>')
 def get_terminals_after_manufacturer(manufactures_id: int) -> Response:
     return make_response(jsonify(terminal_controller.get_terminals_after_manufacturer(manufactures_id)),
                          HTTPStatus.OK)
