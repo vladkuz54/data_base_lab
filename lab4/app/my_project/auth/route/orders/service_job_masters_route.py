@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, Response, request, make_response
 from lab4.app.my_project.auth.controller import service_job_masters_controller
 from lab4.app.my_project.auth.domain import ServiceJobMasters
 
-service_job_masters_bp = Blueprint('service_job_masters', __name__, url_prefix='/service_job_masters')
+service_job_masters_bp = Blueprint('service_job_masters', __name__, url_prefix='/service-job-masters')
 
 
 @service_job_masters_bp.get('')
