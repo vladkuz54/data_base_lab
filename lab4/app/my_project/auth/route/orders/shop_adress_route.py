@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, Response, request, make_response
 from lab4.app.my_project.auth.controller import shop_adress_controller
 from lab4.app.my_project.auth.domain import Shop_Adress
 
-shop_adress_bp = Blueprint('shop_adresses', __name__, url_prefix='/shop_adresses')
+shop_adress_bp = Blueprint('shop_adresses', __name__, url_prefix='/shop-adresses')
 
 
 @shop_adress_bp.get('')
@@ -46,8 +46,4 @@ def delete_shop_adress(shop_adress_id: int) -> Response:
     shop_adress_controller.delete(shop_adress_id)
     return make_response("Shop adress was deleted", HTTPStatus.OK)
 
-
-@shop_adress_bp.get('/get-shop_adress-after-number/<int:in_num>')
-def get_shop_adress_after_number(in_num: int) -> Response:
-    return make_response(jsonify(shop_adress_controller.get_shop_adress_after_number(in_num)), HTTPStatus.OK)
 
