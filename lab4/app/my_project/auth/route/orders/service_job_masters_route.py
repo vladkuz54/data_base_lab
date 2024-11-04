@@ -47,13 +47,13 @@ def delete_service_job_master(service_job_masters_id: int) -> Response:
     return make_response("Service type deleted", HTTPStatus.OK)
 
 
-@service_job_masters_bp.get('/service_job/<int:service_job_id>/masters')
+@service_job_masters_bp.get('/get-masters-after-service-job/<int:service_job_id>')
 def get_masters_after_service_jobs(service_job_id: int) -> Response:
     return make_response(jsonify(service_job_masters_controller.get_masters_after_service_jobs(service_job_id)),
                          HTTPStatus.OK)
 
 
-@service_job_masters_bp.get('/master/<int:master_id>/service-jobs')
+@service_job_masters_bp.get('/get-service-jobs-after-master/<int:master_id>')
 def get_service_job_after_masters(master_id: int) -> Response:
     return make_response(jsonify(service_job_masters_controller.get_service_job_after_masters(master_id)),
                          HTTPStatus.OK)
