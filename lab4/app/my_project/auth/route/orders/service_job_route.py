@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, Response, request, make_response
 from lab4.app.my_project.auth.controller import service_job_controller
 from lab4.app.my_project.auth.domain import ServiceJob
 
-service_job_bp = Blueprint('service_jobs', __name__, url_prefix='/service_jobs')
+service_job_bp = Blueprint('service_jobs', __name__, url_prefix='/service-jobs')
 
 
 @service_job_bp.get('')
@@ -47,7 +47,7 @@ def delete_service_job(service_job_id: int) -> Response:
     return make_response("Service type deleted", HTTPStatus.OK)
 
 
-@service_job_bp.get('/get_service_jobs_after_service_type/<int:service_type_id>')
+@service_job_bp.get('/get-service-jobs-after-service-type/<int:service_type_id>')
 def get_service_jobs_after_service_type(service_type_id: int) -> Response:
     return make_response(jsonify(service_job_controller.get_service_jobs_after_service_type(service_type_id)),
                          HTTPStatus.OK)
