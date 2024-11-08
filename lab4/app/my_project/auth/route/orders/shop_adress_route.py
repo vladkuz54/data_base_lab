@@ -47,3 +47,7 @@ def delete_shop_adress(shop_adress_id: int) -> Response:
     return make_response("Shop adress was deleted", HTTPStatus.OK)
 
 
+@shop_adress_bp.get('/get-shop-adress-after-number/<int:in_num>')
+def get_shop_adress_after_number(in_num: int) -> Response:
+    return make_response(jsonify(shop_adress_controller.get_shop_adress_after_number(in_num)), HTTPStatus.OK)
+
