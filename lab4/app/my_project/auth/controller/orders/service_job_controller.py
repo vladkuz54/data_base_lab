@@ -10,3 +10,6 @@ class ServiceJobController(GeneralController):
 
     def get_service_jobs_after_service_type(self, service_type_id: int) -> List[object]:
         return self._service.get_service_jobs_after_service_type(service_type_id)
+
+    def get_service_jobs_after_terminal(self, terminal_id: int) -> List[object]:
+        return self._service.get_service_jobs_after_terminal(terminal_id)
