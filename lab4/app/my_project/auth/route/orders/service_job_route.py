@@ -31,23 +31,28 @@ def update_service_job(service_job_id: int) -> Response:
     content = request.get_json()
     service_job = ServiceJob.create_from_dto(content)
     service_job_controller.update(service_job_id, service_job)
-    return make_response("Service type updated", HTTPStatus.OK)
+    return make_response("Service job updated", HTTPStatus.OK)
 
 
 @service_job_bp.patch('/<int:service_job_id>')
 def patch_service_job(service_job_id: int) -> Response:
     content = request.get_json()
     service_job_controller.patch(service_job_id, content)
-    return make_response("Service type updated", HTTPStatus.OK)
+    return make_response("Service job updated", HTTPStatus.OK)
 
 
 @service_job_bp.delete('/<int:service_job_id>')
 def delete_service_job(service_job_id: int) -> Response:
     service_job_controller.delete(service_job_id)
-    return make_response("Service type deleted", HTTPStatus.OK)
+    return make_response("Service job deleted", HTTPStatus.OK)
 
 
 @service_job_bp.get('/get-service-jobs-after-service-type/<int:service_type_id>')
 def get_service_jobs_after_service_type(service_type_id: int) -> Response:
     return make_response(jsonify(service_job_controller.get_service_jobs_after_service_type(service_type_id)),
+                         HTTPStatus.OK)
+
+@service_job_bp.get('/get-service-jobs-after-terminal/<int:terminal_id>')
+def get_service_jobs_after_terminal(terminal_id: int) -> Response:
+    return make_response(jsonify(service_job_controller.get_service_jobs_after_terminal(terminal_id)),
                          HTTPStatus.OK)
