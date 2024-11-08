@@ -13,3 +13,8 @@ class ServiceJobDAO(GeneralDAO):
         result = self._session.execute(sqlalchemy.text("CALL get_service_jobs_after_service_type(:p1)"),
                                        {'p1': service_type_id}).mappings().all()
         return [dict(row) for row in result]
+
+    def get_service_jobs_after_terminal(self, terminal_id: int) -> List[Dict[str, Any]]:
+        result = self._session.execute(sqlalchemy.text("CALL get_service_jobs_after_terminal(:p1)"),
+                                       {'p1': terminal_id}).mappings().all()
+        return [dict(row) for row in result]
