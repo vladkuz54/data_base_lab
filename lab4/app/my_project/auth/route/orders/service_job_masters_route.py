@@ -31,20 +31,20 @@ def update_service_job_master(service_job_masters_id: int) -> Response:
     content = request.get_json()
     service_job_masters = ServiceJobMasters.create_from_dto(content)
     service_job_masters_controller.update(service_job_masters_id, service_job_masters)
-    return make_response("Service type updated", HTTPStatus.OK)
+    return make_response("Service job masters updated", HTTPStatus.OK)
 
 
 @service_job_masters_bp.patch('/<int:service_job_masters_id>')
 def patch_service_job_master(service_job_masters_id: int) -> Response:
     content = request.get_json()
     service_job_masters_controller.patch(service_job_masters_id, content)
-    return make_response("Service type updated", HTTPStatus.OK)
+    return make_response("Service job masters updated", HTTPStatus.OK)
 
 
 @service_job_masters_bp.delete('/<int:service_job_masters_id>')
 def delete_service_job_master(service_job_masters_id: int) -> Response:
     service_job_masters_controller.delete(service_job_masters_id)
-    return make_response("Service type deleted", HTTPStatus.OK)
+    return make_response("Service job masters deleted", HTTPStatus.OK)
 
 
 @service_job_masters_bp.get('/get-masters-after-service-job/<int:service_job_id>')
