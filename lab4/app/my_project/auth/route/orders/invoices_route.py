@@ -31,19 +31,19 @@ def update_client(invoices_id: int) -> Response:
     content = request.get_json()
     invoices = Invoices.create_from_dto(content)
     invoices_controller.update(invoices_id, invoices)
-    return make_response("Client updated", HTTPStatus.OK)
+    return make_response("Invoice updated", HTTPStatus.OK)
 
 
 @invoices_bp.patch('/<int:invoices_id>')
 def patch_client(invoices_id: int) -> Response:
     content = request.get_json()
     invoices_controller.patch(invoices_id, content)
-    return make_response("Client updated", HTTPStatus.OK)
+    return make_response("Invoice updated", HTTPStatus.OK)
 
 
 @invoices_bp.delete('/<int:invoices_id>')
 def delete_client(invoices_id: int) -> Response:
     invoices_controller.delete(invoices_id)
-    return make_response("Client deleted", HTTPStatus.OK)
+    return make_response("Invoice deleted", HTTPStatus.OK)
 
 
