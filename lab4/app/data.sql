@@ -143,6 +143,7 @@ drop procedure if exists get_shops_after_client;
 drop procedure if exists get_terminals_after_shop;
 drop procedure if exists get_terminals_after_manufacturer;
 drop procedure if exists get_service_jobs_after_service_type;
+drop procedure if exists get_service_jobs_after_terminal;
 drop procedure if exists get_masters_after_service_jobs;
 drop procedure if exists get_service_job_after_masters;
 delimiter ///
@@ -157,23 +158,27 @@ begin
 	where s.client_id = client_id;
 end ///
 
+
 create procedure get_terminals_after_shop(
-	in shop_id int
-	)
+    in shop_id int
+)
 begin
-	select shop_id, id as terminal_id
-    from terminal
-    where terminal.shop_id = shop_id;
+    select t.shop_id, t.id as terminal_id, sa.street, sa.street_number, sa.gps_latitude, sa.gps_longitude
+    from terminal t
+    join shop s on t.shop_id = s.id
+    join shop_adress sa on s.shop_adress_id = sa.id
+    where t.shop_id = shop_id;
 end ///
 
+
 create procedure get_terminals_after_manufacturer(
-	in manufactures_id int
-    )
+    in manufactures_id int
+)
 begin
-	select m.id as manufactures_id, t.id as terminal_id, m.name
-	from terminal t
-	join manufactures m on t.manufactures_id = m.id
-	where t.manufactures_id = manufactures_id;
+    select m.id as manufactures_id, t.id as terminal_id, m.name
+    from terminal t
+    join manufactures m on t.manufactures_id = m.id
+    where t.manufactures_id = manufactures_id;
 end ///
 
 create procedure get_service_jobs_after_service_type(
@@ -185,6 +190,18 @@ begin
 	join service_type st on sj.service_type_id = st.id
 	where sj.service_type_id = service_type_id;
 end ///
+
+create procedure get_service_jobs_after_terminal(
+	in terminal_id int
+	)
+begin
+	select t.id as terminal_id, sj.id as service_job_id, m.name as manufacturer
+	from service_job sj
+	join terminal t on sj.terminal_id = t.id
+    join manufactures m on t.manufactures_id = m.id
+	where sj.terminal_id = terminal_id;
+end ///
+
 
 create procedure get_masters_after_service_jobs(
 	in master_id int
